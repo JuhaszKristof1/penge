@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" preserveAspectRatio="xMidYMid meet">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e8eef5"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.32" r="0.72">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+    <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f2f5f8"/><stop offset="0.5" stop-color="#c6cfd8"/><stop offset="1" stop-color="#98a4b0"/>
+  </linearGradient>
+  <linearGradient id="aluV" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#eef2f6"/><stop offset="0.45" stop-color="#bcc6d0"/><stop offset="1" stop-color="#8b96a2"/>
+  </linearGradient>
+  <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3c434d"/><stop offset="1" stop-color="#16191e"/>
+  </linearGradient>
+  <linearGradient id="darkV" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#343b45"/><stop offset="0.5" stop-color="#1c2027"/><stop offset="1" stop-color="#0e1115"/>
+  </linearGradient>
+  <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff"/><stop offset="0.5" stop-color="#d3dbe3"/><stop offset="1" stop-color="#9aa6b2"/>
+  </linearGradient>
+  <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#dde2e8"/><stop offset="1" stop-color="#9aa3ad"/>
+  </linearGradient>
+  <linearGradient id="copper" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#e2a463"/><stop offset="1" stop-color="#9c5a22"/>
+  </linearGradient>
+  <linearGradient id="rubber" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2b3038"/><stop offset="1" stop-color="#0d0f12"/>
+  </linearGradient>
+  <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#e2503f"/><stop offset="1" stop-color="#a2231a"/>
+  </linearGradient>
+  <radialGradient id="shadow" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#0b1220" stop-opacity="0.30"/>
+    <stop offset="1" stop-color="#0b1220" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="400" height="300" fill="url(#bg)"/>
+<rect width="400" height="300" fill="url(#glow)"/>
+<ellipse cx="200" cy="258" rx="152" ry="26" fill="url(#shadow)"/>
+<path d="M78,168 Q78,92 178,86 Q300,80 322,116 Q336,140 316,182 Q300,206 200,210 Q108,212 78,168 Z" fill="url(#aluV)" stroke="#7c8794" stroke-width="1.6"/><path d="M96,162 Q100,106 182,102 Q286,98 302,126 Q312,146 296,176 Q282,194 198,196 Q118,197 96,162 Z" fill="#dfe9f2" opacity="0.9"/><ellipse cx="150" cy="150" rx="40" ry="38" fill="#f6fbff" stroke="#9aa6b2" stroke-width="1.6"/><ellipse cx="150" cy="150" rx="27" ry="26" fill="url(#chrome)"/><ellipse cx="150" cy="150" rx="12" ry="12" fill="#eef4fa"/><ellipse cx="248" cy="150" rx="34" ry="30" fill="#eef6fd" stroke="#9aa6b2" stroke-width="1.5"/><ellipse cx="248" cy="150" rx="20" ry="18" fill="url(#chrome)"/><path d="M96,178 Q200,196 300,172" fill="none" stroke="#ffb066" stroke-width="4" opacity="0.75"/><circle cx="300" cy="118" r="5" fill="#ffb066"/>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" preserveAspectRatio="xMidYMid meet">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e8eef5"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.32" r="0.72">
+    <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+    <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f2f5f8"/><stop offset="0.5" stop-color="#c6cfd8"/><stop offset="1" stop-color="#98a4b0"/>
+  </linearGradient>
+  <linearGradient id="aluV" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#eef2f6"/><stop offset="0.45" stop-color="#bcc6d0"/><stop offset="1" stop-color="#8b96a2"/>
+  </linearGradient>
+  <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3c434d"/><stop offset="1" stop-color="#16191e"/>
+  </linearGradient>
+  <linearGradient id="darkV" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#343b45"/><stop offset="0.5" stop-color="#1c2027"/><stop offset="1" stop-color="#0e1115"/>
+  </linearGradient>
+  <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#ffffff"/><stop offset="0.5" stop-color="#d3dbe3"/><stop offset="1" stop-color="#9aa6b2"/>
+  </linearGradient>
+  <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#dde2e8"/><stop offset="1" stop-color="#9aa3ad"/>
+  </linearGradient>
+  <linearGradient id="copper" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#e2a463"/><stop offset="1" stop-color="#9c5a22"/>
+  </linearGradient>
+  <linearGradient id="rubber" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#2b3038"/><stop offset="1" stop-color="#0d0f12"/>
+  </linearGradient>
+  <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#e2503f"/><stop offset="1" stop-color="#a2231a"/>
+  </linearGradient>
+  <radialGradient id="shadow" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#0b1220" stop-opacity="0.30"/>
+    <stop offset="1" stop-color="#0b1220" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<rect width="400" height="300" fill="url(#bg)"/>
+<rect width="400" height="300" fill="url(#glow)"/>
+<ellipse cx="200" cy="258" rx="152" ry="26" fill="url(#shadow)"/>
+<circle cx="184" cy="152" r="70" fill="url(#alu)" stroke="#7c8794" stroke-width="1.6"/><circle cx="184" cy="152" r="56" fill="#b6c0ca"/><path d="M190.0,134.0 L198.0,100.0 L170.0,100.0 L178.0,134.0 Z" fill="#8b96a2" stroke="#7c8794" stroke-width="1.2"/><path d="M202.6,148.2 L236.0,138.1 L222.0,113.9 L196.6,137.8 Z" fill="#8b96a2" stroke="#7c8794" stroke-width="1.2"/><path d="M196.6,166.2 L222.0,190.1 L236.0,165.9 L202.6,155.8 Z" fill="#8b96a2" stroke="#7c8794" stroke-width="1.2"/><path d="M178.0,170.0 L170.0,204.0 L198.0,204.0 L190.0,170.0 Z" fill="#8b96a2" stroke="#7c8794" stroke-width="1.2"/><path d="M165.4,155.8 L132.0,165.9 L146.0,190.1 L171.4,166.2 Z" fill="#8b96a2" stroke="#7c8794" stroke-width="1.2"/><path d="M171.4,137.8 L146.0,113.9 L132.0,138.1 L165.4,148.2 Z" fill="#8b96a2" stroke="#7c8794" stroke-width="1.2"/><circle cx="184" cy="152" r="20" fill="url(#chrome)" stroke="#8b96a2" stroke-width="1.4"/><circle cx="184.0" cy="139.0" r="3.6" fill="#2a3038"/><circle cx="197.0" cy="152.0" r="3.6" fill="#2a3038"/><circle cx="184.0" cy="165.0" r="3.6" fill="#2a3038"/><circle cx="171.0" cy="152.0" r="3.6" fill="#2a3038"/><circle cx="184" cy="152" r="7" fill="#2a3038"/><rect x="236" y="120" width="70" height="64" rx="12" fill="url(#aluV)" stroke="#7c8794" stroke-width="1.4"/><circle cx="286" cy="138" r="10" fill="url(#dark)"/><circle cx="270" cy="182" r="8" fill="url(#copper)"/>
+</svg>
