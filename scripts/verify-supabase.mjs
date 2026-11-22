@@ -54,7 +54,7 @@ function line(label, value) {
 }
 
 async function main() {
-  console.log("\n=== AutoFit AI · Supabase kapcsolat-ellenőrzés ===\n");
+  console.log("\n=== GRIDLINE · Supabase kapcsolat-ellenőrzés ===\n");
 
   if (!url || !anon) {
     console.log("✗ A környezeti változók hiányoznak.");

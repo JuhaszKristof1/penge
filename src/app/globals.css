@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 :root {
+  /* A betűtípusokat a next/font injektálja (--font-sans / --font-display),
+     itt csak biztonsági tartalékot adunk, hogy a CSS-változó mindig létezzen. */
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Inter", system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Inter", system-ui, sans-serif;
 }
 
 * {
@@ -24,9 +26,11 @@ body {
 }
 
 ::selection {
-  background: rgba(255, 106, 0, 0.35);
+  background: rgba(255, 106, 0, 0.32);
   color: #fff;
 }
+
+/* A GRIDLINE motorsport-arculat: fekete/grafit alap, visszafogott narancs. */
 
 /* Scrollbar ---------------------------------------------------------------- */
 ::-webkit-scrollbar {
@@ -34,15 +38,15 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: theme("colors.ink.900");
+  background: theme("colors.ink.950");
 }
 ::-webkit-scrollbar-thumb {
-  background: theme("colors.ink.600");
+  background: theme("colors.ink.700");
   border-radius: 999px;
-  border: 2px solid theme("colors.ink.900");
+  border: 2px solid theme("colors.ink.950");
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: theme("colors.graphite.600");
+  background: theme("colors.ink.600");
 }
 
 @layer components {
@@ -51,27 +55,56 @@ body {
   }
 
   .card {
-    @apply rounded-2xl border border-ink-700 bg-ink-850/80 backdrop-blur-sm;
+    @apply rounded-sm border border-ink-700 bg-ink-850;
+  }
+
+  /* Lapos, kártyamentes felület – a prémium alkalmazás-hangulat alapja.
+     Nincs lekerekítés, nincs árnyék: csak hajszálvonal és sík grafit. */
+  .surface {
+    @apply border border-ink-800 bg-ink-900;
+  }
+
+  .surface-raised {
+    @apply border border-ink-700 bg-ink-850;
+  }
+
+  /* Hajszálvonal-keret, sarkak lekerekítése nélkül. */
+  .hairline {
+    @apply border-ink-800;
+  }
+
+  /* Vékony narancs fénycsík – díszítőelem, nem világító neon. */
+  .streak {
+    @apply pointer-events-none absolute h-px bg-gradient-to-r from-transparent via-brand-500/70 to-transparent;
+  }
+
+  .streak-v {
+    @apply pointer-events-none absolute w-px bg-gradient-to-b from-transparent via-brand-500/50 to-transparent;
+  }
+
+  /* Kockás zászló sáv – nagyon visszafogott, csak keskeny csíkban. */
+  .checker-strip {
+    @apply bg-checker opacity-[0.12];
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:border-brand-500/40 hover:shadow-glow;
+    @apply transition-colors duration-200 hover:border-ink-600 hover:bg-ink-800;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 py-2.5 text-sm font-semibold uppercase tracking-wide transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn-primary {
-    @apply btn bg-brand-500 text-white shadow-lg shadow-brand-500/20 hover:bg-brand-400 hover:shadow-brand-500/40 active:scale-[0.98];
+    @apply btn bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700;
   }
 
   .btn-ghost {
-    @apply btn border border-ink-600 bg-ink-800/60 text-graphite-200 hover:border-brand-500/50 hover:bg-ink-700/70 hover:text-white;
+    @apply btn border border-ink-600 bg-transparent text-graphite-200 hover:border-ink-500 hover:bg-ink-800 hover:text-white;
   }
 
   .btn-outline {
-    @apply btn border border-brand-500/50 bg-transparent text-brand-300 hover:bg-brand-500/10 hover:text-brand-200;
+    @apply btn border border-brand-500/60 bg-transparent text-brand-300 hover:bg-brand-500/10 hover:text-brand-200;
   }
 
   .btn-danger {
@@ -79,7 +112,7 @@ body {
   }
 
   .input {
-    @apply w-full rounded-xl border border-ink-600 bg-ink-900/80 px-4 py-2.5 text-sm text-graphite-100 placeholder:text-graphite-500 transition-colors focus:border-brand-500/70 focus:outline-none focus:ring-2 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply w-full rounded-sm border border-ink-600 bg-ink-900 px-4 py-2.5 text-sm text-graphite-100 placeholder:text-graphite-500 transition-colors focus:border-brand-500/70 focus:outline-none focus:ring-1 focus:ring-brand-500/30 disabled:cursor-not-allowed disabled:opacity-60;
   }
 
   .label {
@@ -87,15 +120,31 @@ body {
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-ink-600 bg-ink-800/70 px-3 py-1 text-xs font-medium text-graphite-300;
+    @apply inline-flex items-center gap-1.5 rounded-sm border border-ink-600 bg-ink-800 px-3 py-1 text-xs font-medium text-graphite-300;
   }
 
+  /* Sportos, de visszafogott tipográfia: feszes betűköz, nincs extra dísz. */
   .section-title {
-    @apply font-display text-2xl font-bold tracking-tight text-white sm:text-3xl;
+    @apply font-display text-2xl font-bold uppercase tracking-[0.04em] text-white sm:text-3xl;
   }
 
   .section-sub {
     @apply mt-2 max-w-2xl text-sm leading-relaxed text-graphite-400 sm:text-base;
+  }
+
+  /* Kis címke a szekciók fölé (narancs vonal + betűköz). */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-brand-400;
+  }
+
+  /* Oldalfejléc a belső oldalakhoz – egységes GRIDLINE megjelenés. */
+  .page-header {
+    @apply relative overflow-hidden border-b border-ink-800 bg-ink-900/30;
+  }
+
+  /* A hosszú szöveges blokkok kényelmes sormagassága. */
+  .prose-gridline p {
+    @apply text-sm leading-relaxed text-graphite-400;
   }
 
   .link-nav {
@@ -111,8 +160,9 @@ body {
     @apply absolute -bottom-1.5 left-0 h-0.5 w-full rounded-full bg-brand-500;
   }
 
-  .divider-glow {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-brand-500/40 to-transparent;
+  /* Vékony, visszafogott elválasztó (nem neon). */
+  .divider {
+    @apply h-px w-full bg-ink-700;
   }
 }
 
@@ -120,11 +170,18 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-  .bg-grid {
-    background-size: 44px 44px;
-  }
   .mask-fade-b {
     mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  }
+  /* Finom technikai rácsminta – a GRIDLINE márka visszafogott textúrája. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .bg-grid-fade {
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 78%);
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -132,5 +189,9 @@ body {
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  /* Pályarajzok: a világos SVG-ket a sötét háttérhez igazítja. */
+  .track-map-invert {
+    filter: invert(1) hue-rotate(180deg) brightness(1.05) contrast(0.95);
   }
 }

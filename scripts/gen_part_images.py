@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate self-contained SVG product illustrations for the AutoFit AI part catalog.
+"""Generate self-contained SVG product illustrations for the GRIDLINE part catalog.
 
 Each illustration is a stylised, product-photo-style rendering of a single part on a
 light studio background. Kept offline (no external image hosts) so the UI never shows

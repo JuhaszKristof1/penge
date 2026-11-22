@@ -3,7 +3,7 @@ import { AuthForm } from "@/components/AuthForm";
 
 export const metadata: Metadata = {
   title: "Bejelentkezés",
-  description: "Jelentkezz be az AutoFit AI fiókodba.",
+  description: "Jelentkezz be a GRIDLINE fiókodba.",
 };
 
 export default function LoginPage() {

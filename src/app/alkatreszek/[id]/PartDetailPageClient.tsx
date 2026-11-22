@@ -50,7 +50,7 @@ export function PartDetailPageClient() {
         <span className="truncate text-graphite-300">{part.name}</span>
       </nav>
 
-      <div className="overflow-hidden rounded-2xl border border-ink-700 bg-ink-850/80 backdrop-blur-sm">
+      <div className="overflow-hidden rounded-sm border border-ink-700 bg-ink-850/80 backdrop-blur-sm">
         <PartDetailContent
           part={part}
           isFavorite={isFavorite(part.id)}

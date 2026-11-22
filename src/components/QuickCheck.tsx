@@ -41,13 +41,11 @@ export function QuickCheck() {
   return (
     <form
       onSubmit={submit}
-      className="card relative overflow-hidden p-5 shadow-card sm:p-6"
+      className="card relative overflow-hidden p-5 sm:p-6"
       aria-label="Gyors kompatibilitás kereső"
     >
-      <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-500/10 blur-3xl" />
-
       <div className="relative mb-4 flex items-center gap-2">
-        <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-500/15 text-brand-400">
+        <span className="grid h-8 w-8 place-items-center rounded-sm bg-brand-500/15 text-brand-400">
           <Sparkles className="h-4 w-4" />
         </span>
         <div>

@@ -1,8 +1,8 @@
 {
-  "name": "autofit-ai",
+  "name": "gridline",
   "version": "1.0.0",
   "private": true,
-  "description": "AutoFit AI - modern automotive parts compatibility platform",
+  "description": "GRIDLINE - modern automotive parts compatibility platform",
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",

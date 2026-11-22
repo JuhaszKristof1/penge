@@ -29,7 +29,7 @@ interface AppContextValue {
   ) => Promise<{ ok: boolean; error?: string; needsEmailConfirm?: boolean }>;
   login: (email: string, password: string) => Promise<{ ok: boolean; error?: string; user?: User }>;
   logout: () => Promise<void>;
-  updateProfile: (patch: { name?: string; avatarColor?: string }) => Promise<void>;
+  updateProfile: (patch: { name?: string; avatarColor?: string; bio?: string; country?: string }) => Promise<void>;
   sendPasswordReset: (email: string) => Promise<{ ok: boolean; error?: string }>;
   updatePassword: (password: string) => Promise<{ ok: boolean; error?: string }>;
 
@@ -230,13 +230,28 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const updateProfile = useCallback(
-    async (patch: { name?: string; avatarColor?: string }) => {
+    async (patch: { name?: string; avatarColor?: string; bio?: string; country?: string }) => {
       if (!currentUser) return;
       await apiFetch("/api/me", {
         method: "PATCH",
-        body: JSON.stringify({ name: patch.name, avatarColor: patch.avatarColor }),
+        body: JSON.stringify({
+          name: patch.name,
+          avatarColor: patch.avatarColor,
+          bio: patch.bio,
+          country: patch.country,
+        }),
       });
-      setCurrentUser((cur) => (cur ? { ...cur, name: patch.name ?? cur.name, avatarColor: patch.avatarColor ?? cur.avatarColor } : cur));
+      setCurrentUser((cur) =>
+        cur
+          ? {
+              ...cur,
+              name: patch.name ?? cur.name,
+              avatarColor: patch.avatarColor ?? cur.avatarColor,
+              bio: patch.bio ?? cur.bio,
+              country: patch.country ?? cur.country,
+            }
+          : cur,
+      );
     },
     [currentUser],
   );

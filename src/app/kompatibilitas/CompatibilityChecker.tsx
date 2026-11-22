@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { CarSelector, EMPTY_SELECTION, type CarSelection } from "@/components/CarSelector";
 import { ResultCard } from "@/components/ResultCard";
-import { DbNotice, EmptyState, SectionHeading } from "@/components/ui";
+import { DbNotice, EmptyState, PageHeader } from "@/components/ui";
 import { toast } from "@/components/Toaster";
 import { useApp } from "@/context/AppContext";
 import { useCatalog } from "@/lib/catalog/CatalogProvider";
@@ -165,15 +165,16 @@ export function CompatibilityChecker() {
   };
 
   return (
-    <div className="container-page py-10 sm:py-14">
-      <SectionHeading
+    <>
+      <PageHeader
         eyebrow="Kompatibilitás ellenőrző"
         title="Ellenőrizd, hogy az alkatrész illik-e a járművedhez"
         sub="Válaszd ki a járművet, add meg az alkatrész adatait, és a rendszer az adatbázis kompatibilitási rekordjai alapján értékeli az illeszkedést."
       />
 
+      <div className="container-page py-10 sm:py-14">
       {status === "unavailable" && (
-        <div className="mt-6 flex items-start gap-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+        <div className="mt-6 flex items-start gap-2.5 rounded-sm border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>
             {message} A kompatibilitás-ellenőrzés csak akkor működik, ha az adatbázis elérhető.
@@ -185,7 +186,7 @@ export function CompatibilityChecker() {
         {/* Űrlap */}
         <form onSubmit={runCheck} className="card p-5 sm:p-6">
           <div className="mb-5 flex items-center gap-2.5">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand-500/10 text-brand-400">
+            <span className="grid h-9 w-9 place-items-center rounded-sm bg-brand-500/10 text-brand-400">
               <Gauge className="h-4 w-4" />
             </span>
             <div>
@@ -303,7 +304,7 @@ export function CompatibilityChecker() {
           </div>
 
           {error && (
-            <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+            <div className="mt-4 flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
               {error}
             </div>
@@ -354,7 +355,7 @@ export function CompatibilityChecker() {
           ) : (
             <div className="card p-6">
               <div className="flex items-center gap-2.5">
-                <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand-500/10 text-brand-400">
+                <span className="grid h-9 w-9 place-items-center rounded-sm bg-brand-500/10 text-brand-400">
                   <Sparkles className="h-4 w-4" />
                 </span>
                 <h3 className="font-display text-sm font-bold text-white">Itt jelenik meg az eredmény</h3>
@@ -371,7 +372,7 @@ export function CompatibilityChecker() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 flex items-start gap-2 rounded-xl border border-ink-700 bg-ink-900/50 px-3.5 py-3 text-xs text-graphite-400">
+              <div className="mt-5 flex items-start gap-2 rounded-sm border border-ink-700 bg-ink-900/50 px-3.5 py-3 text-xs text-graphite-400">
                 <Info className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
                 Ha az alkatrészhez nincs kompatibilitási rekord a kiválasztott járműre, az eredmény „nem biztos” lesz –
                 ez nem jelent jóváhagyást.
@@ -383,5 +384,6 @@ export function CompatibilityChecker() {
         </div>
       </div>
     </div>
+    </>
   );
 }

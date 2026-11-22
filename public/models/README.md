@@ -1,4 +1,4 @@
-# AutoFit AI – 3D model assets
+# GRIDLINE – 3D model assets
 
 Ide kerülnek a 3D modellek. A webes útvonalak a `public` mappához képest indulnak, például `/models/cars/bmw.glb`.
 

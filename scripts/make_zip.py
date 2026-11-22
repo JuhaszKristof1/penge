@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""AutoFit AI – letölthető ZIP archívum készítése.
+"""GRIDLINE – letölthető ZIP archívum készítése.
 
 A projekt gyökérkönyvtárából összegyűjti a forrásfájlokat (src, public, scripts,
 konfigurációk), kihagyja a generált és nagy könyvtárakat (node_modules, .next,
-.git), majd kiírja a public/autofit-ai.zip fájlt.
+.git), majd kiírja a public/gridline.zip fájlt.
 
 Használat:  python3 scripts/make_zip.py
 """
@@ -12,11 +12,11 @@ import os
 import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "public", "autofit-ai.zip")
-PREFIX = "autofit-ai"
+OUT = os.path.join(ROOT, "public", "gridline.zip")
+PREFIX = "gridline"
 
 # Egész könyvtárak, amelyeket beleteszünk a csomagba.
-INCLUDE_DIRS = ["src", "public", "scripts"]
+INCLUDE_DIRS = ["src", "public", "scripts", "supabase"]
 
 # Gyökér szintű fájlok, amelyeket beleteszünk.
 INCLUDE_FILES = [
@@ -44,7 +44,10 @@ EXCLUDE_PARTS = {
     ".DS_Store",
 }
 EXCLUDE_EXT = {".tsbuildinfo"}
-EXCLUDE_NAMES = {"autofit-ai.zip"}
+# A public/site a snapshot_site.py generált kimenete, a ZIP-ek pedig maguk
+# a csomagok – egyik sem való a forráscsomagba.
+EXCLUDE_NAMES = {"gridline.zip", "gridline-weboldal.zip"}
+EXCLUDE_REL_DIRS = {"public/site"}
 
 
 def is_excluded(path: str) -> bool:
@@ -54,6 +57,9 @@ def is_excluded(path: str) -> bool:
     if any(path.endswith(ext) for ext in EXCLUDE_EXT):
         return True
     if os.path.basename(path) in EXCLUDE_NAMES:
+        return True
+    norm = path.replace("\\", "/")
+    if any(norm == d or norm.startswith(d + "/") for d in EXCLUDE_REL_DIRS):
         return True
     return False
 

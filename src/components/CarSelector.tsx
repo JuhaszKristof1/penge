@@ -227,7 +227,7 @@ export function CarSelector({ value, onChange, className }: Props) {
       )}
 
       {engine && (
-        <div className="flex flex-wrap items-center gap-2 rounded-xl border border-ink-700 bg-ink-900/60 px-4 py-3 text-xs">
+        <div className="flex flex-wrap items-center gap-2 rounded-sm border border-ink-700 bg-ink-900/60 px-4 py-3 text-xs">
           <span className="font-semibold text-brand-300">Motorkód:</span>
           <span className="font-mono text-white">{engine.code}</span>
           <span className="text-graphite-600">·</span>

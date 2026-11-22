@@ -1,42 +1,59 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+// A GRIDLINE márkajel: ferde, motorsportos blokk, benne a start-cél vonal és a
+// versenyvonal. Tömör narancs, éles geometria – nincs gradiens, nincs neon.
 export function LogoMark({ className }: { className?: string }) {
   return (
     <span
-      className={cn(
-        "relative grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 shadow-lg shadow-brand-500/30",
-        className,
-      )}
+      className={cn("relative grid h-8 w-9 shrink-0 place-items-center bg-brand-500", className)}
+      style={{ clipPath: "polygon(16% 0, 100% 0, 84% 100%, 0 100%)" }}
       aria-hidden
     >
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5 text-white">
+      <svg viewBox="0 0 24 24" fill="none" className="h-[18px] w-[18px] text-white">
+        {/* Start-cél vonal (kockás rács bal széle). */}
+        <path d="M4 4h3v16H4z" fill="currentColor" opacity="0.4" />
+        <path d="M4 4h3v4H4zM4 12h3v4H4z" fill="currentColor" />
+        {/* A versenyvonal: a rácsról indulva ível a cél felé. */}
         <path
-          d="M4 15.5 5.6 9.2A2.4 2.4 0 0 1 7.93 7.5h8.14a2.4 2.4 0 0 1 2.33 1.7L20 15.5"
+          d="M9 18c3.4 0 4.2-3.2 6-6.4 1.2-2.1 2.4-3.6 5-3.6"
           stroke="currentColor"
-          strokeWidth="1.7"
+          strokeWidth="1.9"
           strokeLinecap="round"
         />
-        <path d="M3.2 15.5h17.6v2.6a1 1 0 0 1-1 1h-1.6a1 1 0 0 1-1-1v-.8H6.8v.8a1 1 0 0 1-1 1H4.2a1 1 0 0 1-1-1v-2.6Z" fill="currentColor" />
-        <circle cx="7.4" cy="13" r="1.05" fill="#fff" />
-        <circle cx="16.6" cy="13" r="1.05" fill="#fff" />
+        <circle cx="19.4" cy="8" r="1.6" fill="currentColor" />
       </svg>
     </span>
   );
 }
 
-export function Logo({ className, compact = false }: { className?: string; compact?: boolean }) {
+/** A GRIDLINE szóvédjegy (logó + felirat), opcionálisan szlogen nélkül. */
+export function Logo({
+  className,
+  compact = false,
+  showSlogan = false,
+}: {
+  className?: string;
+  compact?: boolean;
+  showSlogan?: boolean;
+}) {
   return (
-    <Link href="/" className={cn("group flex items-center gap-2.5", className)} aria-label="AutoFit AI – főoldal">
-      <LogoMark className="transition-transform duration-300 group-hover:scale-105" />
+    <Link
+      href="/"
+      className={cn("group flex items-center gap-2.5", className)}
+      aria-label="GRIDLINE – kezdőlap"
+    >
+      <LogoMark className="transition-transform duration-200 group-hover:-translate-y-px" />
       {!compact && (
         <span className="flex flex-col leading-none">
-          <span className="font-display text-lg font-extrabold tracking-tight text-white">
-            AutoFit<span className="text-brand-500"> AI</span>
+          <span className="font-display text-[19px] font-bold uppercase tracking-[0.26em] text-white">
+            Grid<span className="text-brand-500">line</span>
           </span>
-          <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-graphite-500">
-            Parts Compatibility
-          </span>
+          {showSlogan && (
+            <span className="mt-1 text-[9px] font-medium uppercase tracking-[0.2em] text-graphite-500">
+              Find your line. Set your time.
+            </span>
+          )}
         </span>
       )}
     </Link>

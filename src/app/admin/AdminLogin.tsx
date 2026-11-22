@@ -35,7 +35,7 @@ export function AdminLogin() {
     <div className="container-page flex min-h-[calc(100vh-4rem)] items-center justify-center py-12">
       <div className="w-full max-w-md">
         <div className="mb-6 flex flex-col items-center text-center">
-          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-500/10 text-brand-400">
+          <span className="grid h-14 w-14 place-items-center rounded-sm bg-brand-500/10 text-brand-400">
             <ShieldCheck className="h-7 w-7" />
           </span>
           <h1 className="mt-4 font-display text-2xl font-extrabold text-white">Admin belépés</h1>
@@ -56,7 +56,7 @@ export function AdminLogin() {
                   id="admin-email"
                   type="email"
                   className="input pl-10"
-                  placeholder="admin@autofit.ai"
+                  placeholder="admin@gridline.hu"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
@@ -85,7 +85,7 @@ export function AdminLogin() {
             </div>
 
             {error && (
-              <div className="flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+              <div className="flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
                 <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
                 {error}
               </div>
@@ -104,7 +104,7 @@ export function AdminLogin() {
 
         <div className="mt-6 flex items-center justify-center gap-2 text-xs text-graphite-500">
           <LogoMark className="h-4 w-4" />
-          AutoFit AI admin
+          GRIDLINE admin
         </div>
       </div>
     </div>

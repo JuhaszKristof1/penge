@@ -17,7 +17,7 @@ interface ToastItem {
   tone: ToastTone;
 }
 
-const EVENT = "autofit:toast";
+const EVENT = "gridline:toast";
 let counter = 0;
 
 export function toast(message: string, tone: ToastTone = "info") {
@@ -56,7 +56,7 @@ export function Toaster() {
         <div
           key={item.id}
           className={cn(
-            "pointer-events-auto flex items-start gap-3 rounded-xl border bg-ink-850/95 px-4 py-3 shadow-card backdrop-blur animate-fade-up",
+            "pointer-events-auto flex items-start gap-3 rounded-sm border bg-ink-850/95 px-4 py-3 backdrop-blur animate-fade-up",
             item.tone === "success" && "border-emerald-500/30",
             item.tone === "error" && "border-rose-500/30",
             item.tone === "info" && "border-brand-500/30",

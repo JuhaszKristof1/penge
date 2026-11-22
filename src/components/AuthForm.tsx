@@ -55,7 +55,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
         );
         return;
       }
-      toast.success("Sikeres regisztráció! Üdvözlünk az AutoFit AI-nál.");
+      toast.success("Sikeres regisztráció! Üdvözlünk a GRIDLINE-nál.");
       router.push("/fiok");
     } else {
       setSubmitting(true);
@@ -79,11 +79,11 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
           <h1 className="mt-6 font-display text-3xl font-extrabold leading-tight text-white">
             {isRegister ? (
               <>
-                Csatlakozz az AutoFit AI <span className="text-brand-500">platformjához</span>
+                Csatlakozz a GRIDLINE <span className="text-brand-500">platformjához</span>
               </>
             ) : (
               <>
-                Üdv újra az <span className="text-brand-500">AutoFit AI</span>-nál
+                Üdv újra a <span className="text-brand-500">GRIDLINE</span>-nál
               </>
             )}
           </h1>
@@ -99,7 +99,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
               { icon: ShieldCheck, text: "Kedvenc alkatrészek egy helyen" },
             ].map((f) => (
               <li key={f.text} className="flex items-center gap-3 text-sm text-graphite-300">
-                <span className="grid h-9 w-9 place-items-center rounded-xl bg-ink-800 text-brand-400">
+                <span className="grid h-9 w-9 place-items-center rounded-sm bg-ink-800 text-brand-400">
                   <f.icon className="h-4 w-4" />
                 </span>
                 {f.text}
@@ -113,7 +113,7 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
         </div>
 
         {/* Jobb oldali űrlap */}
-        <div className="card p-6 shadow-card sm:p-8">
+        <div className="card p-6 sm:p-8">
           <div className="mb-6 lg:hidden">
             <LogoMark className="h-11 w-11" />
           </div>
@@ -238,14 +238,14 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
             )}
 
             {error && (
-              <div className="flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+              <div className="flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
                 <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
                 {error}
               </div>
             )}
 
             {notice && (
-              <div className="flex items-start gap-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2.5 text-sm text-emerald-200">
+              <div className="flex items-start gap-2.5 rounded-sm border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2.5 text-sm text-emerald-200">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
                 {notice}
               </div>

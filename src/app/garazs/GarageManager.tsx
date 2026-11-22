@@ -16,7 +16,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import { DbNotice, EmptyState, SectionHeading } from "@/components/ui";
+import { DbNotice, EmptyState, PageHeader } from "@/components/ui";
 import { toast } from "@/components/Toaster";
 import { apiErrorMessage } from "@/lib/api";
 import { CarSelector, EMPTY_SELECTION, type CarSelection } from "@/components/CarSelector";
@@ -191,15 +191,16 @@ export function GarageManager() {
   const loggedOut = ready && !currentUser;
 
   return (
-    <div className="container-page py-10 sm:py-14">
-      <SectionHeading
+    <>
+      <PageHeader
         eyebrow="Személyes járművek"
         title="Autógarázs"
         sub="Mentsd el a járműveidet, állíts be egyet alapértelmezettként, és az ellenőrzéseknél egy kattintással töltsd be őket."
       />
 
+      <div className="container-page py-10 sm:py-14">
       {loggedOut && (
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-brand-500/25 bg-brand-500/[0.07] px-4 py-3">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-sm border border-brand-500/25 bg-brand-500/[0.07] px-4 py-3">
           <p className="flex items-center gap-2 text-sm text-brand-100">
             <AlertCircle className="h-4 w-4 text-brand-400" />
             Vendég módban nem menthető autó. Jelentkezz be a fiókodba a mentéshez.
@@ -216,7 +217,7 @@ export function GarageManager() {
         <form onSubmit={handleSubmit} className="card p-5 sm:p-6">
           <div className="mb-5 flex items-center justify-between gap-3">
             <div className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-brand-500/10 text-brand-400">
+              <span className="grid h-9 w-9 place-items-center rounded-sm bg-brand-500/10 text-brand-400">
                 {editingId ? <Pencil className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
               </span>
               <div>
@@ -250,7 +251,7 @@ export function GarageManager() {
           </div>
 
           {error && (
-            <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+            <div className="mt-4 flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
               {error}
             </div>
@@ -315,7 +316,7 @@ export function GarageManager() {
                   <div className="flex min-w-0 gap-3">
                     <span
                       className={cn(
-                        "grid h-11 w-11 shrink-0 place-items-center rounded-xl",
+                        "grid h-11 w-11 shrink-0 place-items-center rounded-sm",
                         c.isDefault ? "bg-brand-500/15 text-brand-400" : "bg-ink-800 text-graphite-300",
                       )}
                     >
@@ -378,7 +379,7 @@ export function GarageManager() {
                 </div>
 
                 {confirmDelete === c.id && (
-                  <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2.5">
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3 py-2.5">
                     <p className="text-xs text-rose-200">Biztosan törlöd ezt az autót?</p>
                     <div className="flex gap-2">
                       <button
@@ -427,5 +428,6 @@ export function GarageManager() {
         </div>
       </div>
     </div>
+    </>
   );
 }

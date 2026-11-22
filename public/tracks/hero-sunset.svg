@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Naplementés versenypálya">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#07070a"/>
+      <stop offset="34%" stop-color="#151118"/>
+      <stop offset="58%" stop-color="#3a2118"/>
+      <stop offset="74%" stop-color="#7a3c14"/>
+      <stop offset="86%" stop-color="#c2601a"/>
+      <stop offset="100%" stop-color="#e8853a"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd9a8" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#ff9b3d" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#ff6a00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0b" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0a0a0b" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="track" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b1d21"/>
+      <stop offset="100%" stop-color="#0c0d0f"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <circle cx="1210" cy="690" r="430" fill="url(#sun)"/>
+  <circle cx="1210" cy="690" r="118" fill="#ffb066" opacity="0.5"/>
+
+  <!-- horizont: távoli dombok -->
+  <path d="M0 706 L240 686 L430 700 L640 676 L860 700 L1080 682 L1300 702 L1520 680 L1740 700 L1920 688 L1920 760 L0 760 Z" fill="#150f11" opacity="0.9"/>
+
+  <!-- lelátó + épületek sziluett -->
+  <g fill="#100c0e">
+    <path d="M300 706 L300 646 L420 618 L540 646 L540 706 Z"/>
+    <path d="M1500 706 L1500 662 L1600 640 L1700 662 L1700 706 Z"/>
+    <rect x="470" y="676" width="16" height="30"/>
+    <rect x="1580" y="686" width="14" height="20"/>
+  </g>
+  <g fill="#1a1315">
+    <rect x="320" y="664" width="200" height="6"/>
+    <rect x="1516" y="678" width="168" height="5"/>
+  </g>
+
+  <!-- fák -->
+  <g fill="#0e0b0c">
+    <path d="M60 706 q22-52 44 0 z M110 706 q26-62 52 0 z M170 706 q20-46 40 0 z"/>
+    <path d="M1760 706 q24-56 48 0 z M1810 706 q20-46 40 0 z M1856 706 q26-62 52 0 z"/>
+  </g>
+
+  <!-- aszfalt -->
+  <path d="M0 760 L1920 760 L1920 1080 L0 1080 Z" fill="url(#track)"/>
+
+  <!-- pálya ív (balra ívelő jobb kanyar) -->
+  <path d="M-40 1080 C420 1010 560 892 980 862 C1320 838 1560 890 1960 830 L1960 1010 C1600 1060 1340 1012 1020 1032 C600 1058 420 1120 -40 1180 Z" fill="#23262b"/>
+  <path d="M-40 1080 C420 1010 560 892 980 862 C1320 838 1560 890 1960 830 L1960 852 C1560 912 1320 860 980 884 C560 914 420 1032 -40 1102 Z" fill="#3a3f46"/>
+  <path d="M-40 1150 C420 1090 560 1000 980 984 C1340 970 1580 1020 1960 972 L1960 996 C1580 1044 1340 994 980 1008 C560 1024 420 1114 -40 1174 Z" fill="#2c3036"/>
+
+  <!-- piros-fehér kavicságy (kerb) -->
+  <g opacity="0.72">
+    <path d="M-40 1150 C420 1090 560 1000 980 984 C1340 970 1580 1020 1960 972 L1960 982 C1580 1030 1340 980 980 994 C560 1010 420 1100 -40 1160 Z" fill="#c94b3a"/>
+    <path d="M-40 1160 C420 1100 560 1010 980 994 C1340 980 1580 1030 1960 982 L1960 988 C1580 1036 1340 986 980 1000 C560 1016 420 1106 -40 1166 Z" fill="#e9e4dc"/>
+  </g>
+
+  <!-- füves zóna -->
+  <path d="M0 1180 L1920 1004 L1920 1080 L0 1080 Z" fill="#14161a"/>
+
+  <!-- start-cél vonal a pályán -->
+  <g transform="translate(1120 866) rotate(-6)">
+    <rect x="0" y="-6" width="120" height="42" fill="#f4f2ee" opacity="0.92"/>
+    <g fill="#101113" opacity="0.85">
+      <rect x="0" y="-6" width="20" height="14"/><rect x="40" y="-6" width="20" height="14"/><rect x="80" y="-6" width="20" height="14"/>
+      <rect x="20" y="8" width="20" height="14"/><rect x="60" y="8" width="20" height="14"/><rect x="100" y="8" width="20" height="14"/>
+      <rect x="0" y="22" width="20" height="14"/><rect x="40" y="22" width="20" height="14"/><rect x="80" y="22" width="20" height="14"/>
+    </g>
+  </g>
+
+  <!-- atmoszférikus fátyol a szöveg mögé -->
+  <rect y="420" width="1920" height="660" fill="url(#haze)"/>
+</svg>

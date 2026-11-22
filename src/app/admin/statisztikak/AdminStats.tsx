@@ -81,7 +81,7 @@ export function AdminStats() {
       />
 
       {error && (
-        <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+        <div className="mb-4 flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           {error}
         </div>
@@ -164,7 +164,7 @@ function StatCard({ label, value, icon }: { label: string; value: number; icon: 
     <div className="card p-5">
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-graphite-400">{label}</span>
-        <span className="grid h-9 w-9 place-items-center rounded-lg bg-ink-800 text-brand-400">{icon}</span>
+        <span className="grid h-9 w-9 place-items-center rounded-sm bg-ink-800 text-brand-400">{icon}</span>
       </div>
       <p className="mt-3 font-display text-3xl font-extrabold text-white">{value}</p>
     </div>

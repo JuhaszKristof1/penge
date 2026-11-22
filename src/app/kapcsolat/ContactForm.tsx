@@ -32,7 +32,7 @@ export function ContactForm() {
   if (sent) {
     return (
       <div className="card flex flex-col items-center p-10 text-center">
-        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-emerald-500/15 text-emerald-400">
+        <span className="grid h-14 w-14 place-items-center rounded-sm bg-emerald-500/15 text-emerald-400">
           <CheckCircle2 className="h-7 w-7" />
         </span>
         <h2 className="mt-4 font-display text-xl font-bold text-white">Köszönjük az üzenetet!</h2>
@@ -98,7 +98,7 @@ export function ContactForm() {
       </div>
 
       {error && (
-        <div className="mt-4 flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+        <div className="mt-4 flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           {error}
         </div>

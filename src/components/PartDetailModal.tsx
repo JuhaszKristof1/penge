@@ -56,7 +56,7 @@ export function PartDetailModal({
       <div className="absolute inset-0" onClick={onClose} aria-hidden />
       <div
         ref={scrollRef}
-        className="relative max-h-[92vh] w-full max-w-3xl animate-fade-up overflow-y-auto rounded-t-2xl border border-ink-700 bg-ink-850 shadow-card sm:rounded-2xl"
+        className="relative max-h-[92vh] w-full max-w-3xl animate-fade-up overflow-y-auto rounded-sm border border-ink-700 bg-ink-850 sm:rounded-sm"
         role="dialog"
         aria-modal="true"
         aria-label={part.name}
@@ -64,7 +64,7 @@ export function PartDetailModal({
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-xl border border-ink-600 bg-ink-950/70 text-graphite-300 backdrop-blur transition-colors hover:text-white"
+          className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-sm border border-ink-600 bg-ink-950/70 text-graphite-300 backdrop-blur transition-colors hover:text-white"
           aria-label="Bezárás"
         >
           <X className="h-4 w-4" />

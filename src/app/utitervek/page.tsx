@@ -12,12 +12,12 @@ import {
   Wrench,
 } from "lucide-react";
 import Link from "next/link";
-import { DbNotice, SectionHeading } from "@/components/ui";
+import { DbNotice, PageHeader } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Fejlesztési útiterv",
   description:
-    "Az AutoFit AI működő funkciói és tervezett bővítései: AI alkatrész felismerés képből, VIN alapú kompatibilitás, 3D konfigurátor és tuning kompatibilitás.",
+    "A GRIDLINE működő funkciói és tervezett bővítései: AI alkatrész felismerés képből, VIN alapú kompatibilitás, 3D konfigurátor és tuning kompatibilitás.",
 };
 
 const FUTURE = [
@@ -62,21 +62,20 @@ const DONE = [
 
 export default function RoadmapPage() {
   return (
-    <div className="container-page py-10 sm:py-14">
-      <SectionHeading
+    <>
+      <PageHeader
         eyebrow="Fejlesztési útiterv"
         title="A jelenlegi állapot és a következő fázisok"
-        sub="Az AutoFit AI egy valós adatbázisra épülő platform. Az alábbi modulok későbbi fejlesztésként jelennek meg a felületen."
+        sub="A GRIDLINE egy valós adatbázisra épülő platform. Az alábbi modulok későbbi fejlesztésként jelennek meg a felületen."
       />
 
-      <div className="mt-6">
-        <DbNotice />
-      </div>
+      <div className="container-page py-10 sm:py-14">
+      <DbNotice />
 
       {/* Későbbi funkciók */}
       <section className="mt-12">
         <div className="mb-6 flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-500/10 text-brand-400">
+          <span className="grid h-10 w-10 place-items-center rounded-sm bg-brand-500/10 text-brand-400">
             <Sparkles className="h-5 w-5" />
           </span>
           <div>
@@ -88,9 +87,8 @@ export default function RoadmapPage() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {FUTURE.map((f) => (
             <div key={f.title} className="card relative overflow-hidden p-5">
-              <div className="pointer-events-none absolute right-0 top-0 h-24 w-24 rounded-full bg-brand-500/[0.06] blur-2xl" />
               <div className="flex items-start justify-between">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-ink-800 text-graphite-400">
+                <span className="grid h-11 w-11 place-items-center rounded-sm bg-ink-800 text-graphite-400">
                   <f.icon className="h-5 w-5" />
                 </span>
                 <span className="inline-flex items-center gap-1 rounded-full border border-ink-600 bg-ink-800/70 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-graphite-400">
@@ -113,7 +111,7 @@ export default function RoadmapPage() {
       {/* Jelenlegi funkciók */}
       <section className="mt-14">
         <div className="mb-6 flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-500/10 text-emerald-400">
+          <span className="grid h-10 w-10 place-items-center rounded-sm bg-emerald-500/10 text-emerald-400">
             <Layers className="h-5 w-5" />
           </span>
           <div>
@@ -125,7 +123,7 @@ export default function RoadmapPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {DONE.map((d) => (
             <div key={d.title} className="card p-5">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-emerald-500/10 text-emerald-400">
+              <span className="grid h-11 w-11 place-items-center rounded-sm bg-emerald-500/10 text-emerald-400">
                 <d.icon className="h-5 w-5" />
               </span>
               <h3 className="mt-4 font-display text-sm font-bold text-white">{d.title}</h3>
@@ -153,6 +151,7 @@ export default function RoadmapPage() {
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

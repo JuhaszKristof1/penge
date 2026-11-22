@@ -43,7 +43,7 @@ export function CategoryGrid() {
 
   if (categories.length === 0) {
     return (
-      <p className="rounded-xl border border-dashed border-ink-600 bg-ink-900/40 px-4 py-6 text-sm text-graphite-400">
+      <p className="rounded-sm border border-dashed border-ink-600 bg-ink-900/40 px-4 py-6 text-sm text-graphite-400">
         Nincs betöltött alkatrészkategória az adatbázisban.
       </p>
     );
@@ -60,7 +60,7 @@ export function CategoryGrid() {
             className="card card-hover group flex flex-col gap-3 p-4"
           >
             <div className="flex items-start justify-between">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-ink-800 text-brand-400 transition-colors group-hover:bg-brand-500/15 group-hover:text-brand-300">
+              <span className="grid h-11 w-11 place-items-center rounded-sm bg-ink-800 text-brand-400 transition-colors group-hover:bg-brand-500/15 group-hover:text-brand-300">
                 <Icon className="h-5 w-5" />
               </span>
               <ArrowUpRight className="h-4 w-4 text-graphite-600 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-400" />

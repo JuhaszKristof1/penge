@@ -71,8 +71,8 @@ export function PartImage({
 function FallbackGraphic({ label, size }: { label: string; size: "sm" | "md" | "lg" }) {
   const iconSize = size === "lg" ? "h-14 w-14" : size === "sm" ? "h-7 w-7" : "h-10 w-10";
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-ink-800 via-ink-850 to-ink-900">
-      <div className="absolute inset-0 bg-grid bg-grid-fade opacity-40" aria-hidden />
+    <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-ink-850">
+      <div className="absolute inset-0 bg-grid bg-grid-fade opacity-50" aria-hidden />
       <ImageOff className={cn(iconSize, "relative text-brand-500/70")} />
       <span className="relative max-w-[80%] truncate text-[10px] font-semibold uppercase tracking-wider text-graphite-400">
         {label}

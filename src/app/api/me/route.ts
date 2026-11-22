@@ -11,7 +11,7 @@ export async function GET(request: Request) {
   const admin = getAdminClient()!;
   const { data, error } = await admin
     .from("profiles")
-    .select("id, email, full_name, role, avatar_color, created_at")
+    .select("id, email, full_name, role, avatar_color, bio, country, created_at")
     .eq("id", auth.userId)
     .maybeSingle();
 
@@ -25,7 +25,12 @@ export async function PATCH(request: Request) {
   const auth = await getAuthContext(request);
   if (!auth) return json({ error: "unauthorized" }, 401);
 
-  const body = (await request.json().catch(() => ({}))) as { name?: string; avatarColor?: string };
+  const body = (await request.json().catch(() => ({}))) as {
+    name?: string;
+    avatarColor?: string;
+    bio?: string;
+    country?: string;
+  };
   const patch: Record<string, unknown> = {};
   if (typeof body.name === "string") {
     const name = body.name.trim();
@@ -33,6 +38,8 @@ export async function PATCH(request: Request) {
     patch.full_name = name;
   }
   if (typeof body.avatarColor === "string") patch.avatar_color = body.avatarColor;
+  if (typeof body.bio === "string") patch.bio = body.bio.trim().slice(0, 500) || null;
+  if (typeof body.country === "string") patch.country = body.country.trim() || null;
 
   if (Object.keys(patch).length === 0) return json({ error: "Nincs módosítandó adat." }, 400);
 

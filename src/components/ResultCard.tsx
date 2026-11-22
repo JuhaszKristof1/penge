@@ -39,7 +39,7 @@ export function ResultCard({ result, className }: { result: CompatibilityResult;
       {/* Fejléc */}
       <div className={cn("flex flex-wrap items-center justify-between gap-3 border-b px-5 py-4 sm:px-6", meta.bg, meta.border)}>
         <div className="flex items-center gap-3">
-          <span className={cn("grid h-11 w-11 place-items-center rounded-xl border", meta.border, meta.bg, meta.color)}>
+          <span className={cn("grid h-11 w-11 place-items-center rounded-sm border", meta.border, meta.bg, meta.color)}>
             <Icon className="h-6 w-6" />
           </span>
           <div>
@@ -61,7 +61,7 @@ export function ResultCard({ result, className }: { result: CompatibilityResult;
 
         <div className="grid gap-4 sm:grid-cols-2">
           {/* Autó */}
-          <div className="rounded-xl border border-ink-700 bg-ink-900/50 p-4">
+          <div className="rounded-sm border border-ink-700 bg-ink-900/50 p-4">
             <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-brand-400">
               <Car className="h-4 w-4" />
               Jármű
@@ -77,7 +77,7 @@ export function ResultCard({ result, className }: { result: CompatibilityResult;
           </div>
 
           {/* Alkatrész */}
-          <div className="rounded-xl border border-ink-700 bg-ink-900/50 p-4">
+          <div className="rounded-sm border border-ink-700 bg-ink-900/50 p-4">
             <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-brand-400">
               <Package className="h-4 w-4" />
               Alkatrész
@@ -94,8 +94,8 @@ export function ResultCard({ result, className }: { result: CompatibilityResult;
 
         {/* Illeszkedő katalógus-elem */}
         {result.matchedPart && (
-          <div className="mt-4 flex items-center gap-4 rounded-xl border border-brand-500/25 bg-brand-500/[0.06] p-4">
-            <span className="h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-ink-700 bg-white">
+          <div className="mt-4 flex items-center gap-4 rounded-sm border border-brand-500/25 bg-brand-500/[0.06] p-4">
+            <span className="h-16 w-16 shrink-0 overflow-hidden rounded-sm border border-ink-700 bg-white">
               <PartImage
                 part={{ name: result.matchedPart.name, category: (result.matchedPart.category as PartCategory) }}
                 className="h-full w-full"
@@ -141,7 +141,7 @@ export function ResultCard({ result, className }: { result: CompatibilityResult;
 
         {/* Figyelmeztetések */}
         {result.warnings.length > 0 && (
-          <div className="mt-5 rounded-xl border border-amber-500/25 bg-amber-500/[0.06] p-4">
+          <div className="mt-5 rounded-sm border border-amber-500/25 bg-amber-500/[0.06] p-4">
             <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-amber-300">
               <ShieldAlert className="h-4 w-4" />
               Figyelmeztetések

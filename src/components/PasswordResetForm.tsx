@@ -77,7 +77,7 @@ export function PasswordResetForm() {
 
   return (
     <div className="container-page flex min-h-[calc(100vh-4rem)] items-center justify-center py-12">
-      <div className="card w-full max-w-md p-6 shadow-card sm:p-8">
+      <div className="card w-full max-w-md p-6 sm:p-8">
         <LogoMark className="h-11 w-11" />
         <h1 className="mt-5 font-display text-xl font-extrabold text-white">
           {recoveryMode ? "Új jelszó megadása" : "Elfelejtett jelszó"}
@@ -180,7 +180,7 @@ export function PasswordResetForm() {
 
 function ErrorBox({ message }: { message: string }) {
   return (
-    <div className="flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+    <div className="flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
       <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
       {message}
     </div>
@@ -189,7 +189,7 @@ function ErrorBox({ message }: { message: string }) {
 
 function NoticeBox({ message }: { message: string }) {
   return (
-    <div className="flex items-start gap-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2.5 text-sm text-emerald-200">
+    <div className="flex items-start gap-2.5 rounded-sm border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-2.5 text-sm text-emerald-200">
       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
       {message}
     </div>

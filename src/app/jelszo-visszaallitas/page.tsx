@@ -3,7 +3,7 @@ import { PasswordResetForm } from "@/components/PasswordResetForm";
 
 export const metadata: Metadata = {
   title: "Jelszó visszaállítás",
-  description: "Állítsd vissza az AutoFit AI fiókod jelszavát.",
+  description: "Állítsd vissza a GRIDLINE fiókod jelszavát.",
 };
 
 export default function PasswordResetPage() {

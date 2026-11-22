@@ -7,8 +7,16 @@
 // ---------------------------------------------------------------------------
 
 import { getSupabaseClient } from "./client";
+import type { LapStatus, MeasurementType } from "@/lib/types";
 import type {
   BrandRow,
+  ChallengeDefinitionRow,
+  LapTimeRow,
+  LicenceLevelRow,
+  TrackLayoutRow,
+  TrackRow,
+  UserChallengeRow,
+  VehicleCategoryRow,
   CategoryRow,
   CompatibilityReportRow,
   EngineRow,
@@ -195,7 +203,7 @@ export function fetchFitmentsDetailed(partId: string): Promise<QueryResult<Fitme
 export function fetchProfile(userId: string): Promise<QueryResult<ProfileRow>> {
   const supabase = getSupabaseClient();
   return run(() =>
-    supabase!.from("profiles").select("id, email, full_name, role, avatar_color, created_at").eq("id", userId).maybeSingle(),
+    supabase!.from("profiles").select("id, email, full_name, role, avatar_color, bio, country, created_at").eq("id", userId).maybeSingle(),
   );
 }
 
@@ -204,7 +212,7 @@ export function fetchProfiles(): Promise<QueryResult<ProfileRow[]>> {
   return run(() =>
     supabase!
       .from("profiles")
-      .select("id, email, full_name, role, avatar_color, created_at")
+      .select("id, email, full_name, role, avatar_color, bio, country, created_at")
       .order("created_at", { ascending: false }),
   );
 }
@@ -258,4 +266,142 @@ export function fetchCompatibilityReports(
     if (userId) q = q.eq("user_id", userId);
     return q;
   });
+}
+
+// --- Motorsport: pályák, változatok, kategóriák -----------------------------
+
+const TRACK_COLUMNS =
+  "id, slug, name, locality, county, country, latitude, longitude, description, image_url, layout_image_url, length_m, width, corners, opened_year, status, website, source_url, source_note, created_at";
+
+export function fetchTracks(): Promise<QueryResult<TrackRow[]>> {
+  const supabase = getSupabaseClient();
+  return run(() => supabase!.from("tracks").select(TRACK_COLUMNS).order("name", { ascending: true }));
+}
+
+export function fetchTrackBySlug(slug: string): Promise<QueryResult<TrackRow>> {
+  const supabase = getSupabaseClient();
+  return run(() => supabase!.from("tracks").select(TRACK_COLUMNS).eq("slug", slug).maybeSingle());
+}
+
+export function fetchTrackById(id: string): Promise<QueryResult<TrackRow>> {
+  const supabase = getSupabaseClient();
+  return run(() => supabase!.from("tracks").select(TRACK_COLUMNS).eq("id", id).maybeSingle());
+}
+
+export function fetchLayoutsForTracks(trackIds: string[]): Promise<QueryResult<TrackLayoutRow[]>> {
+  const supabase = getSupabaseClient();
+  if (trackIds.length === 0) return Promise.resolve({ data: [], error: null });
+  return run(() =>
+    supabase!
+      .from("track_layouts")
+      .select("id, track_id, slug, name, length_m, corners, direction, description, map_image_url, is_default")
+      .in("track_id", trackIds)
+      .order("is_default", { ascending: false })
+      .order("name", { ascending: true }),
+  );
+}
+
+export function fetchVehicleCategories(): Promise<QueryResult<VehicleCategoryRow[]>> {
+  const supabase = getSupabaseClient();
+  return run(() =>
+    supabase!
+      .from("vehicle_categories")
+      .select("id, code, name, description, sort_order")
+      .order("sort_order", { ascending: true }),
+  );
+}
+
+export function fetchLicenceLevels(): Promise<QueryResult<LicenceLevelRow[]>> {
+  const supabase = getSupabaseClient();
+  return run(() =>
+    supabase!
+      .from("licence_levels")
+      .select("code, name, sort_order, description, min_points")
+      .order("sort_order", { ascending: true }),
+  );
+}
+
+// --- Fejlődés: feladatok ---------------------------------------------------
+
+export function fetchChallenges(): Promise<QueryResult<ChallengeDefinitionRow[]>> {
+  const supabase = getSupabaseClient();
+  return run(() =>
+    supabase!
+      .from("challenge_definitions")
+      .select("code, name, description, icon, points, category, criteria, sort_order, is_active")
+      .eq("is_active", true)
+      .order("sort_order", { ascending: true }),
+  );
+}
+
+export function fetchUserChallenges(userId: string): Promise<QueryResult<UserChallengeRow[]>> {
+  const supabase = getSupabaseClient();
+  return run(() =>
+    supabase!
+      .from("user_challenges")
+      .select("user_id, challenge_code, points_awarded, completed_at")
+      .eq("user_id", userId),
+  );
+}
+
+// --- Motorsport: köridők (ranglista) ---------------------------------------
+
+const LAP_EMBED =
+  "id, user_id, track_id, layout_id, vehicle_id, vehicle_label, vehicle_category, lap_time_ms, measured_at, measurement_type, status, evidence_url, evidence_type, note, gps_session_id, reviewed_by, reviewed_at, review_note, created_at, tracks(name, slug), track_layouts(name), profiles!lap_times_user_id_fkey(full_name, avatar_color)";
+
+export interface LapQueryFilters {
+  trackId?: string;
+  layoutId?: string;
+  category?: string;
+  measurementType?: MeasurementType;
+  /** ISO dátum (YYYY-MM-DD) – az ennél nem régebbi eredmények. */
+  since?: string;
+  status?: LapStatus;
+  limit?: number;
+}
+
+/**
+ * Köridők lekérdezése. Ranglistához mindig `status: "approved"`, hogy csak a
+ * hitelesített eredmények jelenjenek meg. A pályaváltozat és a mérési kategória
+ * szerinti szűrés elkülöníti a különböző dimenziókat.
+ */
+export function fetchLapTimes(filters: LapQueryFilters = {}): Promise<QueryResult<LapTimeRow[]>> {
+  const supabase = getSupabaseClient();
+  return run(() => {
+    let q = supabase!.from("lap_times").select(LAP_EMBED).eq("status", filters.status ?? "approved");
+    if (filters.trackId) q = q.eq("track_id", filters.trackId);
+    if (filters.layoutId) q = q.eq("layout_id", filters.layoutId);
+    if (filters.category) q = q.eq("vehicle_category", filters.category);
+    if (filters.measurementType) q = q.eq("measurement_type", filters.measurementType);
+    if (filters.since) q = q.gte("measured_at", filters.since);
+    return q
+      .order("lap_time_ms", { ascending: true })
+      .order("measured_at", { ascending: false })
+      .limit(filters.limit ?? 100);
+  });
+}
+
+export function fetchLapTimesForUser(userId: string, limit = 100): Promise<QueryResult<LapTimeRow[]>> {
+  const supabase = getSupabaseClient();
+  return run(() =>
+    supabase!
+      .from("lap_times")
+      .select(LAP_EMBED)
+      .eq("user_id", userId)
+      .order("measured_at", { ascending: false })
+      .limit(limit),
+  );
+}
+
+/** A legfrissebb jóváhagyott eredmények (időrendben, a ranglista helyezés nélkül). */
+export function fetchRecentApprovedLaps(limit = 8): Promise<QueryResult<LapTimeRow[]>> {
+  const supabase = getSupabaseClient();
+  return run(() =>
+    supabase!
+      .from("lap_times")
+      .select(LAP_EMBED)
+      .eq("status", "approved")
+      .order("created_at", { ascending: false })
+      .limit(limit),
+  );
 }

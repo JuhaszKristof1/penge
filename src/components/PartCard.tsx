@@ -32,7 +32,7 @@ export function PartCard({
             }}
             aria-label={isFavorite ? "Eltávolítás a kedvencek közül" : "Hozzáadás a kedvencekhez"}
             className={cn(
-              "absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-xl border backdrop-blur transition-all",
+              "absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-sm border backdrop-blur transition-all",
               isFavorite
                 ? "border-rose-500/50 bg-rose-500/20 text-rose-300"
                 : "border-ink-600 bg-ink-950/70 text-graphite-300 hover:border-rose-500/50 hover:text-rose-300",

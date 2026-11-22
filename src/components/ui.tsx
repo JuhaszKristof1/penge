@@ -11,11 +11,11 @@ import { STATUS_META } from "@/lib/status";
 
 export function Badge({
   children,
-  tone = "neutral",
+  tone ="neutral",
   className,
 }: {
   children: React.ReactNode;
-  tone?: "neutral" | "brand" | "success" | "danger" | "warn";
+  tone?:"neutral" |"brand" |"success" |"danger" |"warn";
   className?: string;
 }) {
   const tones = {
@@ -27,8 +27,7 @@ export function Badge({
   };
   return (
     <span
-      className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold",
+      className={cn("inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold",
         tones[tone],
         className,
       )}
@@ -42,8 +41,7 @@ export function StatusBadge({ status, className }: { status: CompatibilityStatus
   const meta = STATUS_META[status];
   return (
     <span
-      className={cn(
-        "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-wide",
+      className={cn("inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-wide",
         meta.bg,
         meta.border,
         meta.color,
@@ -59,8 +57,7 @@ export function StatusBadge({ status, className }: { status: CompatibilityStatus
 export function DbNotice({ className, compact = false }: { className?: string; compact?: boolean }) {
   return (
     <div
-      className={cn(
-        "flex items-start gap-3 rounded-xl border border-emerald-500/25 bg-emerald-500/[0.07] px-4 py-3",
+      className={cn("flex items-start gap-3 border border-emerald-500/25 bg-emerald-500/[0.07] px-4 py-3",
         className,
       )}
       role="note"
@@ -88,32 +85,70 @@ export function SectionHeading({
   eyebrow,
   title,
   sub,
-  align = "left",
+  align ="left",
   className,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   sub?: React.ReactNode;
-  align?: "left" | "center";
+  align?:"left" |"center";
   className?: string;
 }) {
   return (
-    <div className={cn(align === "center" && "text-center", className)}>
+    <div className={cn(align ==="center" &&"text-center", className)}>
       {eyebrow && (
         <div
-          className={cn(
-            "mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-400",
-            align === "center" && "justify-center",
+          className={cn("mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-400",
+            align ==="center" &&"justify-center",
           )}
         >
           <span className="h-px w-6 bg-brand-500/60" />
           {eyebrow}
-          {align === "center" && <span className="h-px w-6 bg-brand-500/60" />}
+          {align ==="center" && <span className="h-px w-6 bg-brand-500/60" />}
         </div>
       )}
       <h2 className="section-title">{title}</h2>
-      {sub && <p className={cn("section-sub", align === "center" && "mx-auto")}>{sub}</p>}
+      {sub && <p className={cn("section-sub", align ==="center" &&"mx-auto")}>{sub}</p>}
     </div>
+  );
+}
+
+/** Egységes GRIDLINE oldalfejléc a belső oldalakhoz.
+ *  Lapos, alkalmazásszerű sáv: hajszálvonal, finom átlós textúra, narancs
+ *  fénycsík – lekerekítés és árnyék nélkül. */
+export function PageHeader({
+  eyebrow,
+  title,
+  sub,
+  children,
+  className,
+}: {
+  eyebrow?: string;
+  title: React.ReactNode;
+  sub?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={cn("relative overflow-hidden border-b border-ink-800 bg-ink-900/30", className)}>
+      <div className="pointer-events-none absolute inset-0 bg-diag-lines opacity-[0.35] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
+      <span className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
+      <div className="container-page relative py-10 sm:py-14">
+        {eyebrow && (
+          <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em] text-brand-400">
+            <span className="h-px w-6 bg-brand-500" />
+            {eyebrow}
+          </span>
+        )}
+        <h1 className="mt-3 font-display text-3xl font-bold uppercase leading-none tracking-[0.03em] text-white text-balance sm:text-4xl lg:text-5xl">
+          {title}
+        </h1>
+        {sub && (
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-graphite-400 sm:text-[15px]">{sub}</p>
+        )}
+        {children && <div className="mt-6">{children}</div>}
+      </div>
+    </section>
   );
 }
 
@@ -121,7 +156,7 @@ export function Progress({ value, className }: { value: number; className?: stri
   return (
     <div className={cn("h-2 w-full overflow-hidden rounded-full bg-ink-700", className)}>
       <div
-        className="h-full rounded-full bg-gradient-to-r from-brand-600 to-brand-400 transition-all duration-700"
+        className="h-full rounded-full bg-brand-500 transition-all duration-700"
         style={{ width: `${Math.min(100, Math.max(0, value))}%` }}
       />
     </div>
@@ -140,8 +175,8 @@ export function EmptyState({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-ink-600 bg-ink-900/40 px-6 py-14 text-center">
-      {icon && <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-ink-800 text-brand-400">{icon}</div>}
+    <div className="flex flex-col items-center justify-center border border-dashed border-ink-700 bg-ink-900/40 px-6 py-14 text-center">
+      {icon && <div className="mb-4 grid h-14 w-14 place-items-center bg-ink-800 text-brand-400">{icon}</div>}
       <h3 className="font-display text-lg font-semibold text-white">{title}</h3>
       {description && <p className="mt-2 max-w-md text-sm text-graphite-400">{description}</p>}
       {action && <div className="mt-5">{action}</div>}
@@ -155,7 +190,7 @@ export function Stars({ rating, className }: { rating: number; className?: strin
       {[1, 2, 3, 4, 5].map((i) => (
         <svg key={i} viewBox="0 0 20 20" className="h-3.5 w-3.5" aria-hidden>
           <path
-            fill={i <= Math.round(rating) ? "currentColor" : "none"}
+            fill={i <= Math.round(rating) ?"currentColor" :"none"}
             stroke="currentColor"
             strokeWidth="1.4"
             d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.6Z"

@@ -261,7 +261,7 @@ export function AdminParts() {
       )}
 
       {error && (
-        <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+        <div className="mb-4 flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           {error}
         </div>
@@ -279,7 +279,7 @@ export function AdminParts() {
           description={parts.length === 0 ? "Az adatbázisban jelenleg nincs alkatrész. Adj hozzá újat vagy importálj adatot." : "A keresés nem adott találatot."}
         />
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-ink-700">
+        <div className="overflow-hidden rounded-sm border border-ink-700">
           <table className="w-full text-left text-sm">
             <thead className="bg-ink-900/80 text-xs uppercase tracking-wide text-graphite-400">
               <tr>
@@ -296,7 +296,7 @@ export function AdminParts() {
                     <div className="flex items-center gap-3">
                       <PartImage
                         part={{ name: p.name, category: "", image: p.image_url ?? undefined }}
-                        className="h-10 w-10 shrink-0 rounded-lg"
+                        className="h-10 w-10 shrink-0 rounded-sm"
                       />
                       <div className="min-w-0">
                         <p className="truncate font-semibold text-white">{p.name}</p>
@@ -313,7 +313,7 @@ export function AdminParts() {
                       <button
                         type="button"
                         onClick={() => openEdit(p)}
-                        className="grid h-8 w-8 place-items-center rounded-lg border border-ink-600 text-graphite-300 transition-colors hover:border-brand-500/50 hover:text-brand-300"
+                        className="grid h-8 w-8 place-items-center rounded-sm border border-ink-600 text-graphite-300 transition-colors hover:border-brand-500/50 hover:text-brand-300"
                         aria-label="Szerkesztés"
                       >
                         <Pencil className="h-3.5 w-3.5" />
@@ -321,7 +321,7 @@ export function AdminParts() {
                       <button
                         type="button"
                         onClick={() => setConfirmDelete(p.id)}
-                        className="grid h-8 w-8 place-items-center rounded-lg border border-ink-600 text-graphite-300 transition-colors hover:border-rose-500/50 hover:text-rose-300"
+                        className="grid h-8 w-8 place-items-center rounded-sm border border-ink-600 text-graphite-300 transition-colors hover:border-rose-500/50 hover:text-rose-300"
                         aria-label="Törlés"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
@@ -346,7 +346,7 @@ export function AdminParts() {
               <button
                 type="button"
                 onClick={() => setShowForm(false)}
-                className="grid h-9 w-9 place-items-center rounded-xl border border-ink-600 text-graphite-300 hover:text-white"
+                className="grid h-9 w-9 place-items-center rounded-sm border border-ink-600 text-graphite-300 hover:text-white"
                 aria-label="Bezárás"
               >
                 <X className="h-4 w-4" />

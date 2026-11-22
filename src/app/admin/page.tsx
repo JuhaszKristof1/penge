@@ -67,7 +67,7 @@ export default function AdminOverviewPage() {
       />
 
       {error && (
-        <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+        <div className="mb-4 flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           {error}
         </div>
@@ -76,7 +76,7 @@ export default function AdminOverviewPage() {
       {/* Adatbázis állapot */}
       <div className="card mb-6 flex flex-col gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-xl bg-ink-800 text-brand-400">
+          <span className="grid h-11 w-11 place-items-center rounded-sm bg-ink-800 text-brand-400">
             <Database className="h-5 w-5" />
           </span>
           <div>
@@ -119,7 +119,7 @@ export default function AdminOverviewPage() {
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <Link href="/admin/alkatreszek" className="card card-hover flex items-center justify-between p-5">
                 <span className="flex items-center gap-3">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-ink-800 text-brand-400">
+                  <span className="grid h-11 w-11 place-items-center rounded-sm bg-ink-800 text-brand-400">
                     <Package className="h-5 w-5" />
                   </span>
                   <span>
@@ -131,7 +131,7 @@ export default function AdminOverviewPage() {
               </Link>
               <Link href="/admin/statisztikak" className="card card-hover flex items-center justify-between p-5">
                 <span className="flex items-center gap-3">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-ink-800 text-brand-400">
+                  <span className="grid h-11 w-11 place-items-center rounded-sm bg-ink-800 text-brand-400">
                     <BarChart3 className="h-5 w-5" />
                   </span>
                   <span>
@@ -147,7 +147,7 @@ export default function AdminOverviewPage() {
       )}
 
       {source === "none" && (
-        <div className="mt-6 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+        <div className="mt-6 rounded-sm border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
           Az adatbázis jelenleg nem elérhető. Ellenőrizd a Supabase konfigurációt és a szerver futását.
         </div>
       )}
@@ -160,7 +160,7 @@ function StatCard({ label, value, icon }: { label: string; value: number; icon: 
     <div className="card p-5">
       <div className="flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wide text-graphite-400">{label}</span>
-        <span className="grid h-9 w-9 place-items-center rounded-lg bg-ink-800 text-brand-400">{icon}</span>
+        <span className="grid h-9 w-9 place-items-center rounded-sm bg-ink-800 text-brand-400">{icon}</span>
       </div>
       <p className="mt-3 font-display text-3xl font-extrabold text-white">{value}</p>
     </div>

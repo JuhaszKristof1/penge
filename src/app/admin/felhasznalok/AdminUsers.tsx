@@ -43,7 +43,7 @@ export function AdminUsers() {
       </div>
 
       {error && (
-        <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
+        <div className="mb-4 flex items-start gap-2.5 rounded-sm border border-rose-500/30 bg-rose-500/10 px-3.5 py-2.5 text-sm text-rose-200">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           {error}
         </div>
@@ -61,7 +61,7 @@ export function AdminUsers() {
           description={allUsers.length === 0 ? "Még egyetlen regisztrált felhasználó sincs." : "A keresés nem adott találatot."}
         />
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-ink-700">
+        <div className="overflow-hidden rounded-sm border border-ink-700">
           <table className="w-full text-left text-sm">
             <thead className="bg-ink-900/80 text-xs uppercase tracking-wide text-graphite-400">
               <tr>
@@ -77,7 +77,7 @@ export function AdminUsers() {
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       <span
-                        className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-xs font-bold text-white"
+                        className="grid h-9 w-9 shrink-0 place-items-center rounded-sm text-xs font-bold text-white"
                         style={{ backgroundColor: u.avatarColor }}
                       >
                         {u.name.charAt(0).toUpperCase()}

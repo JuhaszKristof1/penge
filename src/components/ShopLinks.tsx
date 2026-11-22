@@ -24,7 +24,7 @@ export function ShopLinks({
   const links = buildShopLinks(part);
 
   return (
-    <section className={cn("rounded-2xl border border-ink-700 bg-ink-900/50 p-5", className)}>
+    <section className={cn("rounded-sm border border-ink-700 bg-ink-900/50 p-5", className)}>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-wide text-white">
           <ShoppingCart className="h-4 w-4 text-brand-400" />
@@ -45,10 +45,10 @@ export function ShopLinks({
             href={shop.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 rounded-xl border border-ink-700 bg-ink-850/70 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500/40 hover:bg-ink-800"
+            className="group flex items-center gap-3 rounded-sm border border-ink-700 bg-ink-850/70 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-500/40 hover:bg-ink-800"
           >
             <span
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-lg text-xs font-extrabold text-white shadow-inner"
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-sm text-xs font-extrabold text-white shadow-inner"
               style={{ backgroundColor: shop.accent }}
               aria-hidden
             >
@@ -58,7 +58,7 @@ export function ShopLinks({
               <span className="block text-sm font-bold text-white">{shop.name}</span>
               <span className="block truncate text-[11px] text-graphite-400">{shop.tagline}</span>
             </span>
-            <span className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-brand-500/40 px-2.5 py-1.5 text-[11px] font-semibold text-brand-300 transition-colors group-hover:bg-brand-500/10 group-hover:text-brand-200">
+            <span className="inline-flex shrink-0 items-center gap-1 rounded-sm border border-brand-500/40 px-2.5 py-1.5 text-[11px] font-semibold text-brand-300 transition-colors group-hover:bg-brand-500/10 group-hover:text-brand-200">
               Megtekintés
               <ExternalLink className="h-3 w-3" />
             </span>

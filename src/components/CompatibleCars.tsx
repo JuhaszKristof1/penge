@@ -72,7 +72,7 @@ export function CompatibleCars({ part, max, className }: { part: Part; max?: num
   const hidden = cars.length - shown.length;
 
   return (
-    <section className={cn("rounded-2xl border border-ink-700 bg-ink-900/50 p-5", className)}>
+    <section className={cn("rounded-sm border border-ink-700 bg-ink-900/50 p-5", className)}>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-wide text-white">
           <Car className="h-4 w-4 text-brand-400" />
@@ -97,9 +97,9 @@ export function CompatibleCars({ part, max, className }: { part: Part; max?: num
           {shown.map((car) => (
             <li
               key={car.key}
-              className="flex items-center gap-3 rounded-xl border border-ink-700 bg-ink-850/70 px-3 py-2.5"
+              className="flex items-center gap-3 rounded-sm border border-ink-700 bg-ink-850/70 px-3 py-2.5"
             >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-ink-800 text-brand-400">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-sm bg-ink-800 text-brand-400">
                 <Car className="h-4 w-4" />
               </span>
               <span className="min-w-0 flex-1">

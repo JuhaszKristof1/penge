@@ -59,6 +59,8 @@ export function AccountDashboard() {
   const [tab, setTab] = useState<TabKey>("cars");
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
+  const [bio, setBio] = useState("");
+  const [country, setCountry] = useState("");
   const [selectedPart, setSelectedPart] = useState<Part | null>(null);
   const [shopMode, setShopMode] = useState(false);
 
@@ -70,6 +72,8 @@ export function AccountDashboard() {
     if (currentUser) {
       setName(currentUser.name);
       setColor(currentUser.avatarColor);
+      setBio(currentUser.bio ?? "");
+      setCountry(currentUser.country ?? "");
     }
   }, [currentUser]);
 
@@ -87,7 +91,7 @@ export function AccountDashboard() {
       toast.error("A név nem lehet üres.");
       return;
     }
-    updateProfile({ name: name.trim(), avatarColor: color });
+    updateProfile({ name: name.trim(), avatarColor: color, bio: bio.trim(), country: country.trim() });
     toast.success("Profil mentve.");
   };
 
@@ -101,14 +105,14 @@ export function AccountDashboard() {
     <div className="container-page py-10 sm:py-14">
       {/* Profil fejléc */}
       <div className="card overflow-hidden">
-        <div className="relative h-28 bg-gradient-to-r from-brand-700/40 via-ink-800 to-ink-850">
-          <div className="absolute inset-0 bg-grid bg-grid-fade opacity-40" />
+        <div className="relative h-28 bg-gradient-to-r from-brand-700/30 via-ink-800 to-ink-850">
+          <div className="absolute inset-0 bg-grid bg-grid-fade opacity-50" />
         </div>
         <div className="px-5 pb-5 sm:px-7">
           <div className="-mt-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex items-end gap-4">
               <span
-                className="grid h-20 w-20 place-items-center rounded-2xl border-4 border-ink-850 text-2xl font-extrabold text-white shadow-lg"
+                className="grid h-20 w-20 place-items-center rounded-sm border-4 border-ink-850 text-2xl font-extrabold text-white shadow-lg"
                 style={{ backgroundColor: currentUser.avatarColor }}
               >
                 {currentUser.name.charAt(0).toUpperCase()}
@@ -154,14 +158,14 @@ export function AccountDashboard() {
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_320px] lg:items-start">
         {/* Fő tartalom */}
         <div>
-          <div className="mb-5 flex gap-1.5 overflow-x-auto rounded-xl border border-ink-700 bg-ink-900/50 p-1.5 no-scrollbar">
+          <div className="mb-5 flex gap-1.5 overflow-x-auto rounded-sm border border-ink-700 bg-ink-900/50 p-1.5 no-scrollbar">
             {TABS.map((t) => (
               <button
                 key={t.key}
                 type="button"
                 onClick={() => setTab(t.key)}
                 className={cn(
-                  "flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors",
+                  "flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-sm px-4 py-2.5 text-sm font-semibold transition-colors",
                   tab === t.key ? "bg-brand-500 text-white" : "text-graphite-400 hover:bg-ink-800 hover:text-white",
                 )}
               >
@@ -188,7 +192,7 @@ export function AccountDashboard() {
               ) : (
                 garage.map((c) => (
                   <div key={c.id} className="card flex flex-wrap items-center gap-4 p-4">
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-ink-800 text-brand-400">
+                    <span className="grid h-11 w-11 place-items-center rounded-sm bg-ink-800 text-brand-400">
                       <Car className="h-5 w-5" />
                     </span>
                     <div className="min-w-0 flex-1">
@@ -378,7 +382,7 @@ export function AccountDashboard() {
                     type="button"
                     onClick={() => setColor(c)}
                     className={cn(
-                      "h-8 w-8 rounded-lg border-2 transition-transform hover:scale-110",
+                      "h-8 w-8 rounded-sm border-2 transition-transform hover:scale-110",
                       color === c ? "border-white" : "border-transparent",
                     )}
                     style={{ backgroundColor: c }}
@@ -386,6 +390,34 @@ export function AccountDashboard() {
                   />
                 ))}
               </div>
+            </div>
+
+            <div>
+              <label className="label" htmlFor="profile-country">
+                Ország
+              </label>
+              <input
+                id="profile-country"
+                className="input"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                placeholder="Magyarország"
+              />
+            </div>
+
+            <div>
+              <label className="label" htmlFor="profile-bio">
+                Bemutatkozás
+              </label>
+              <textarea
+                id="profile-bio"
+                className="input resize-y"
+                rows={3}
+                maxLength={500}
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                placeholder="Rövid bemutatkozás a versenyzői profilodhoz…"
+              />
             </div>
 
             <button type="button" onClick={saveProfile} className="btn-primary w-full">
@@ -397,10 +429,10 @@ export function AccountDashboard() {
           <div className="mt-5 border-t border-ink-700 pt-4">
             <h4 className="mb-2 text-xs font-bold uppercase tracking-wide text-graphite-400">Gyors elérés</h4>
             <div className="space-y-2">
-              <Link href="/kompatibilitas" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-graphite-300 hover:bg-ink-800 hover:text-white">
+              <Link href="/kompatibilitas" className="flex items-center gap-2 rounded-sm px-3 py-2 text-sm text-graphite-300 hover:bg-ink-800 hover:text-white">
                 <Package className="h-4 w-4 text-brand-400" /> Kompatibilitás ellenőrzés
               </Link>
-              <Link href="/alkatreszek" className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-graphite-300 hover:bg-ink-800 hover:text-white">
+              <Link href="/alkatreszek" className="flex items-center gap-2 rounded-sm px-3 py-2 text-sm text-graphite-300 hover:bg-ink-800 hover:text-white">
                 <Package className="h-4 w-4 text-brand-400" /> Alkatrészkereső
               </Link>
             </div>
@@ -448,7 +480,7 @@ function StatCard({
   };
   return (
     <div className="card p-4">
-      <span className={cn("grid h-10 w-10 place-items-center rounded-xl", tones[tone])}>
+      <span className={cn("grid h-10 w-10 place-items-center rounded-sm", tones[tone])}>
         <Icon className="h-5 w-5" />
       </span>
       <p className="mt-3 font-display text-2xl font-extrabold text-white">{value}</p>

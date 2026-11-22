@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Building2, Database, Layers, ShieldCheck, Sparkles, Users } from "lucide-react";
-import { DbNotice, SectionHeading } from "@/components/ui";
+import { DbNotice, PageHeader } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "A projektről",
-  description: "Az AutoFit AI célja: átlátható, modern autóalkatrész-kompatibilitási platform valós adatbázissal.",
+  description: "A GRIDLINE célja: átlátható, modern autóalkatrész-kompatibilitási platform valós adatbázissal.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="container-page py-10 sm:py-14">
-      <SectionHeading
+    <>
+      <PageHeader
         eyebrow="A projektről"
-        title="Az AutoFit AI bemutatása"
-        sub="Modern, prémium autóipari megjelenésű platform, amely az alkatrész-kompatibilitás ellenőrzését teszi egyszerűvé és átláthatóvá."
+        title="A GRIDLINE bemutatása"
+        sub="Modern, prémium motorsport-platform, amely a magyar versenypályákat, a hiteles köridőket és az autós közösséget egy helyre gyűjti."
       />
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+      <div className="container-page py-10 sm:py-14">
+      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <div className="card p-6 sm:p-8">
           <h2 className="font-display text-xl font-bold text-white">Miért készült ez a projekt?</h2>
           <p className="mt-4 text-sm leading-relaxed text-graphite-300">
             Az alkatrészvásárlás gyakran bizonytalansággal jár: vajon a kiválasztott fékbetét vagy szűrő tényleg illik a
-            járműhöz? Az AutoFit AI ezt a folyamatot rendszerezi. A felhasználó kiválasztja az autót és megadja az
+            járműhöz? A GRIDLINE ezt a folyamatot rendszerezi. A felhasználó kiválasztja az autót és megadja az
             alkatrészt, a rendszer pedig érthető eredményt ad – indoklással, figyelmeztetésekkel és bizonyossági szinttel.
           </p>
           <p className="mt-4 text-sm leading-relaxed text-graphite-300">
@@ -42,8 +43,8 @@ export default function AboutPage() {
               { icon: ShieldCheck, title: "Átláthatóság", text: "Minden kompatibilitási eredmény az adatbázis fitments rekordjain alapul." },
               { icon: Users, title: "Felhasználó-központú", text: "Garázs, mentett ellenőrzések és kedvencek a saját fiókban." },
             ].map((f) => (
-              <div key={f.title} className="rounded-xl border border-ink-700 bg-ink-900/40 p-4">
-                <span className="grid h-9 w-9 place-items-center rounded-lg bg-ink-800 text-brand-400">
+              <div key={f.title} className="rounded-sm border border-ink-700 bg-ink-900/40 p-4">
+                <span className="grid h-9 w-9 place-items-center rounded-sm bg-ink-800 text-brand-400">
                   <f.icon className="h-4 w-4" />
                 </span>
                 <h3 className="mt-3 text-sm font-semibold text-white">{f.title}</h3>
@@ -60,7 +61,7 @@ export default function AboutPage() {
               Projekt tények
             </h3>
             <dl className="mt-4 space-y-3 text-sm">
-              <Fact label="Név" value="AutoFit AI" />
+              <Fact label="Név" value="GRIDLINE" />
               <Fact label="Verzió" value="2.0 – adatbázis" />
               <Fact label="Stack" value="Next.js · TypeScript · Tailwind" />
               <Fact label="Adattárolás" value="Supabase (PostgreSQL)" />
@@ -85,7 +86,8 @@ export default function AboutPage() {
           </div>
         </aside>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
 

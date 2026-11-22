@@ -24,10 +24,12 @@ export function getSupabaseClient(): SupabaseClient | null {
       persistSession: true,
       autoRefreshToken: true,
       detectSessionInUrl: true,
-      storageKey: "autofit-auth",
+      // Új márkanév: a korábbi munkamenet-kulcsot nem használjuk tovább, ezért
+      // a felhasználóknak egyszer újra be kell jelentkezniük (adat nem vész el).
+      storageKey: "gridline-auth",
     },
     global: {
-      headers: { "x-application-name": "autofit-ai" },
+      headers: { "x-application-name": "gridline" },
     },
   });
   return cached;

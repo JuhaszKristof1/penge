@@ -89,23 +89,29 @@ export function PartsBrowser() {
   };
 
   return (
-    <div className="container-page py-8 sm:py-12">
-      <header className="mb-6">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-400">Alkatrészkereső</p>
-        <h1 className="mt-2 font-display text-2xl font-extrabold text-white sm:text-3xl">
-          Keress alkatrészt az adatbázisból
-        </h1>
-        <p className="mt-2 max-w-2xl text-sm text-graphite-400">
-          Keresés név, gyártói cikkszám vagy OE szám alapján. Az adatok a csatlakoztatott adatbázisból származnak.
-        </p>
-      </header>
-
-      {status === "unavailable" && (
-        <div className="mb-5 flex items-start gap-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2.5 text-sm text-amber-200">
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          {message}
+    <>
+      <section className="page-header">
+        <div className="container-page py-12 sm:py-16">
+          <span className="eyebrow">
+            <span className="h-px w-6 bg-brand-500" />
+            Alkatrészkereső
+          </span>
+          <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-white text-balance sm:text-4xl">
+            Keress alkatrészt az adatbázisból
+          </h1>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-graphite-400 sm:text-base">
+            Keresés név, gyártói cikkszám vagy OE szám alapján. Az adatok a csatlakoztatott adatbázisból származnak.
+          </p>
         </div>
-      )}
+      </section>
+
+      <div className="container-page py-8 sm:py-12">
+        {status === "unavailable" && (
+          <div className="mb-5 flex items-start gap-2.5 rounded-sm border border-amber-500/30 bg-amber-500/10 px-3.5 py-2.5 text-sm text-amber-200">
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+            {message}
+          </div>
+        )}
 
       {/* Keresősáv */}
       <div className="card mb-5 p-4">
@@ -153,11 +159,11 @@ export function PartsBrowser() {
                 <option value="newest">Legújabb</option>
               </select>
             </div>
-            <div className="hidden items-center gap-1 rounded-xl border border-ink-600 p-1 sm:flex">
+            <div className="hidden items-center gap-1 rounded-sm border border-ink-600 p-1 sm:flex">
               <button
                 type="button"
                 onClick={() => setView("grid")}
-                className={cn("grid h-8 w-8 place-items-center rounded-lg", view === "grid" ? "bg-brand-500 text-white" : "text-graphite-400")}
+                className={cn("grid h-8 w-8 place-items-center rounded-sm", view === "grid" ? "bg-brand-500 text-white" : "text-graphite-400")}
                 aria-label="Rács nézet"
               >
                 <LayoutGrid className="h-4 w-4" />
@@ -165,7 +171,7 @@ export function PartsBrowser() {
               <button
                 type="button"
                 onClick={() => setView("list")}
-                className={cn("grid h-8 w-8 place-items-center rounded-lg", view === "list" ? "bg-brand-500 text-white" : "text-graphite-400")}
+                className={cn("grid h-8 w-8 place-items-center rounded-sm", view === "list" ? "bg-brand-500 text-white" : "text-graphite-400")}
                 aria-label="Lista nézet"
               >
                 <List className="h-4 w-4" />
@@ -268,6 +274,7 @@ export function PartsBrowser() {
           onToggleFavorite={(p) => void toggleFavorite(p.id)}
         />
       )}
-    </div>
+      </div>
+    </>
   );
 }
